@@ -25,6 +25,7 @@ export default class RestaurantList extends React.Component {
     let listItems = [];
 
     if (restaurants !== undefined){
+      // Show label when clicking on marker
       listItems = restaurants.map( (restaurant) => 
         <ListItem onClick={() => {selectRestaurant(restaurant.name, restaurant.geometry.location.lat(), restaurant.geometry.location.lng())}} button>
           <ListItemText primary={restaurant.name} />

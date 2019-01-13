@@ -3,8 +3,10 @@ const restaurants = (state = [], action) => {
     case 'REFRESH_LIST':
       return action.restaurants
     case 'ORDER_BY_DISTANCE':
+      //order by distance asc
       return state.sort(function(a, b){return a.distance-b.distance});
     case 'ORDER_BY_PRICE':
+      //order by price asc
       return state.sort(function(a, b){
         if(typeof a.price_level === "undefined" ) {
           return 1;

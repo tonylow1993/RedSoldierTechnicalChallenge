@@ -14,6 +14,8 @@ const google = window.google;
 class RetaurantMap extends React.Component {
 
   render() {
+
+    //load selected restaurant from props
     const { marker, refreshList } = this.props;
     
     const GoogleMapComponent = compose(
@@ -49,6 +51,7 @@ class RetaurantMap extends React.Component {
                 if (status === google.maps.places.PlacesServiceStatus.OK) {
 
                     let sortedResult = results.map((restaurant) => {
+                      //Compute distance between red soldier's and restaurants
                       let distance = Math.sqrt( Math.pow((restaurant.geometry.location.lat()-22.337406), 2) + Math.pow((restaurant.geometry.location.lng()-114.1485533), 2) );
                       return { ...restaurant, distance};
                     });
@@ -67,7 +70,7 @@ class RetaurantMap extends React.Component {
     )(props => (
       <GoogleMap 
         defaultZoom={17}
-        defaultCenter={{ lat: 22.337406, lng: 114.1485533 }}
+        defaultCenter={{ lat: 22.337406, lng: 114.1485533 }}  //Set red soldier's coordinate as center
         onTilesLoaded={props.fetchPlaces}
         ref={props.onMapMounted}
         onBoundsChanged={props.fetchPlaces}
